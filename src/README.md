@@ -1,2 +1,0 @@
-# MysteryIsland
-//My learning project 
