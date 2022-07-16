@@ -57,7 +57,6 @@ public abstract class Animal{
                     newY = (startPoint.getY()-(speed-Math.abs(difference)));
                 }
                 System.out.println("up");
-                break;
             }
 
             case 2 ->{
@@ -73,7 +72,6 @@ public abstract class Animal{
                             (speed-(StartIsland.myIsland.getLengthX()-2)));
                 }
                 System.out.println("right");
-                break;
             }
 
             case 3 -> {
@@ -89,7 +87,6 @@ public abstract class Animal{
                             (speed - (StartIsland.myIsland.getLengthY()-2)));
                 }
                 System.out.println("down");
-                break;
             }
 
             case 4 -> {
@@ -101,7 +98,6 @@ public abstract class Animal{
                     newX = (startPoint.getX()-(speed-Math.abs(difference)));
                 }
                 System.out.println("left");
-                break;
             }
 
         }
