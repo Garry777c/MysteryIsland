@@ -18,22 +18,24 @@ public class StartIsland {
 //        printCells(myIsland);
 
         Animal wolf1 = new Wolf();
-        Animal boar1 = new Boar();
+//        Animal boar1 = new Boar();
         Animal horse1 = new Horse();
 
         System.out.println(wolf1);
-        System.out.println(boar1);
+//        System.out.println(boar1);
+        wolf1.eat(horse1);
         System.out.println(horse1);
 
-        for (int i=1; i<=10; i++) {
+        for (int i=1; i<=3; i++) {
             wolf1.move();
-            boar1.move();
+//            boar1.move();
             horse1.move();
             System.out.println(wolf1);
-            System.out.println(boar1);
+//            System.out.println(boar1);
             System.out.println(horse1);
-        }
 
+        }
+        wolf1.eat(horse1);
     }
 
     public static void printCells (Island myIsland){

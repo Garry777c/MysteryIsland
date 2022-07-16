@@ -11,6 +11,7 @@ public class Plant{
     protected boolean isAlive;
 
     public Plant() {
+        this.weight = 1;
         this.isAlive = true;
         this.setLocation(StartIsland.randomCell());
     }

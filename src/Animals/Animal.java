@@ -1,28 +1,21 @@
 package Animals;
 
 import Animals.Herbi.Caterpillar;
-import General.AnimalType;
-import General.Island;
-import General.IslandCell;
-import General.StartIsland;
+import General.*;
 
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Animal{
 
     //general fields
-    protected static String[] animalList = {
-            "Wolf", "Boa", "Fox", "Bear", "Eagle",
-            "Horse", "Deer", "Rabbit", "Mouse", "Goat", "Sheep", "Boar", "Bull", "Duck", "Caterpillar", "Plant"
-    };
-
-
 
     protected IslandCell location;
     protected float weight;
     protected int speed;
     protected float maxFoodToFeelGood;
     protected boolean isAlive;
+//    protected Map<String, Integer> animalEatingTable;
 
     protected Animal() {
         this.isAlive = true;
@@ -32,7 +25,13 @@ public abstract class Animal{
 
 
     //general methods
-    public void eat() {
+    public void eat(Object obj) {
+        String whoEaten = obj.getClass().getSimpleName();
+        String whoEats = this.getClass().getSimpleName();
+
+        int possibility = AnimalTable.getInstance().returnPossibility(whoEats, whoEaten);
+
+        System.out.println(whoEats + " eats "+ whoEaten +" with possibility "+ possibility +"%");
     }
 
     public void multiply(){
