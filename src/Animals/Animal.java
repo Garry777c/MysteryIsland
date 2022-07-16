@@ -1,5 +1,6 @@
 package Animals;
 
+import Animals.Herbi.Caterpillar;
 import General.AnimalType;
 import General.Island;
 import General.IslandCell;
@@ -10,6 +11,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class Animal{
 
     //general fields
+    protected static String[] animalList = {
+            "Wolf", "Boa", "Fox", "Bear", "Eagle",
+            "Horse", "Deer", "Rabbit", "Mouse", "Goat", "Sheep", "Boar", "Bull", "Duck", "Caterpillar", "Plant"
+    };
+
+
 
     protected IslandCell location;
     protected float weight;
@@ -32,7 +39,7 @@ public abstract class Animal{
     }
 
     public void move(){
-        IslandCell startPoint = this.location;
+        IslandCell startPoint = this.getLocation();
         int newX = 0;
         int newY = 0;
         int speed = this.getSpeed();
@@ -62,7 +69,7 @@ public abstract class Animal{
                 else if (difference<StartIsland.myIsland.getLengthX()) {
                     newX = difference;
                 } else {
-                    newX = (startPoint.getX())+Math.abs(speed+
+                    newX = (startPoint.getX())-Math.abs(speed+
                             (speed-(StartIsland.myIsland.getLengthX()-2)));
                 }
                 System.out.println("right");
@@ -78,7 +85,7 @@ public abstract class Animal{
                 else if (difference<StartIsland.myIsland.getLengthY()) {
                     newY = difference;
                 } else {
-                    newY = (startPoint.getY()) +Math.abs(speed+
+                    newY = (startPoint.getY()) -Math.abs(speed+
                             (speed - (StartIsland.myIsland.getLengthY()-2)));
                 }
                 System.out.println("down");

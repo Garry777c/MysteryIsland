@@ -3,9 +3,12 @@ package Animals.Carni;
 import Animals.Carnivorous;
 import General.Island;
 
+import java.util.Map;
+
 public class Wolf extends Carnivorous {
 
-    private static final int maxAmountOnTheCell = 30;
+    public static final int maxAmountOnTheCell = 30;
+
 
     public Wolf() {
         super();

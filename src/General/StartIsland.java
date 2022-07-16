@@ -3,6 +3,7 @@ package General;
 import Animals.Animal;
 import Animals.Carni.Wolf;
 import Animals.Herbi.Boar;
+import Animals.Herbi.Horse;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -17,16 +18,20 @@ public class StartIsland {
 //        printCells(myIsland);
 
         Animal wolf1 = new Wolf();
-//        Animal boar1 = new Boar();
+        Animal boar1 = new Boar();
+        Animal horse1 = new Horse();
 
         System.out.println(wolf1);
-//        System.out.println(boar1);
+        System.out.println(boar1);
+        System.out.println(horse1);
 
         for (int i=1; i<=10; i++) {
             wolf1.move();
-//            boar1.move();
+            boar1.move();
+            horse1.move();
             System.out.println(wolf1);
-//            System.out.println(boar1);
+            System.out.println(boar1);
+            System.out.println(horse1);
         }
 
     }
