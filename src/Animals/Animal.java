@@ -67,8 +67,7 @@ public abstract class Animal{
                 else if (difference<StartIsland.myIsland.getLengthX()) {
                     newX = difference;
                 } else {
-                    newX = (startPoint.getX())-Math.abs(speed+
-                            (speed-(StartIsland.myIsland.getLengthX()-2)));
+                    newX = (startPoint.getX()+((StartIsland.myIsland.getLengthX()-1)-startPoint.getX()));
                 }
                 System.out.println("right");
             }
@@ -82,8 +81,7 @@ public abstract class Animal{
                 else if (difference<StartIsland.myIsland.getLengthY()) {
                     newY = difference;
                 } else {
-                    newY = (startPoint.getY()) -Math.abs(speed+
-                            (speed - (StartIsland.myIsland.getLengthY()-2)));
+                    newY = (startPoint.getY()+((StartIsland.myIsland.getLengthY()-1)-startPoint.getY()));
                 }
                 System.out.println("down");
             }

@@ -7,5 +7,8 @@ public class Rabbit extends Herbivorous {
 
     public Rabbit() {
         super();
+        this.weight = 2;
+        this.speed = 2;
+        this.maxFoodToFeelGood = 0.45F;
     }
 }
