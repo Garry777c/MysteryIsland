@@ -3,7 +3,7 @@ package Animals;
 import General.IslandCell;
 import General.StartIsland;
 
-public class Plant{
+public class Plant extends LifeElement{
     public static final int maxAmountOnTheCell = 200;
 
     protected IslandCell location;
@@ -13,6 +13,7 @@ public class Plant{
     public Plant() {
         this.weight = 1;
         this.isAlive = true;
+        this.lifeAmount = 100;
         this.setLocation(StartIsland.randomCell());
     }
 
@@ -35,4 +36,17 @@ public class Plant{
     public void setAlive(boolean alive) {
         isAlive = alive;
     }
+
+    @Override
+    public String toString() {
+        return "Plant: { " +
+                this.getClass().getSimpleName() +
+                ", "+location +
+                ", weight=" + weight +
+                ", isAlive=" + isAlive +
+                '}';
+    }
+
+
+
 }

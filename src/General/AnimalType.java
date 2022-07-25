@@ -16,5 +16,6 @@ public enum AnimalType {
     HORSE,
     MOUSE,
     RABBIT,
-    SHEEP
+    SHEEP,
+    PLANT
 }

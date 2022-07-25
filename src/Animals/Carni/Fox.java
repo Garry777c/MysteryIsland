@@ -7,5 +7,8 @@ public class Fox extends Carnivorous {
 
     public Fox() {
         super();
+        this.weight = 8;
+        this.speed = 2;
+        this.maxFoodToFeelGood = 2;
     }
 }

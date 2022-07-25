@@ -9,6 +9,9 @@ public class Boa extends Carnivorous {
 
     public Boa() {
         super();
+        this.weight = 15;
+        this.speed = 1;
+        this.maxFoodToFeelGood = 3;
     }
 
 }

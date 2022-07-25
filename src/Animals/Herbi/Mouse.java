@@ -7,5 +7,8 @@ public class Mouse extends Herbivorous {
 
     public Mouse() {
         super();
+        this.weight = 0.05F;
+        this.speed = 1;
+        this.maxFoodToFeelGood = 0.01f;
     }
 }

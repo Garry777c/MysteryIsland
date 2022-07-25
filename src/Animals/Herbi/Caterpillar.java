@@ -7,5 +7,8 @@ public class Caterpillar extends Herbivorous {
 
     public Caterpillar() {
         super();
+        this.weight = 0.01F;
+        this.speed = 0;
+        this.maxFoodToFeelGood = 0;
     }
 }

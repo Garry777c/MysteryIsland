@@ -7,5 +7,8 @@ public class Eagle extends Carnivorous {
 
     public Eagle() {
         super();
+        this.weight = 6;
+        this.speed = 3;
+        this.maxFoodToFeelGood = 1;
     }
 }

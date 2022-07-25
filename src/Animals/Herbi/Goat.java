@@ -7,5 +7,8 @@ public class Goat extends Herbivorous {
 
     public Goat() {
         super();
+        this.weight = 60;
+        this.speed = 3;
+        this.maxFoodToFeelGood = 10;
     }
 }

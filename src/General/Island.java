@@ -2,8 +2,8 @@ package General;
 
 public class Island {
     private static Island instance = null;
-    private int lengthX=9;
-    private int lengthY=9;
+    private int lengthX=3;
+    private int lengthY=3;
 
 
     IslandCell [][] myMysteryIsland = new IslandCell[lengthY][lengthX]; //locations (cells) number

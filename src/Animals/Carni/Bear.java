@@ -2,10 +2,27 @@ package Animals.Carni;
 
 import Animals.Carnivorous;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Bear extends Carnivorous {
     public static final int maxAmountOnTheCell = 5;
+    public volatile static AtomicInteger count = new AtomicInteger();
+    private static Bear instance;
 
-    public Bear() {
+
+    private Bear() {
         super();
+        this.weight = 500;
+        this.speed = 2;
+        this.maxFoodToFeelGood = 80;
+        Bear.count.getAndIncrement();
     }
+
+    public synchronized static Bear returnBear(){
+        if (count.get() <= 30) {
+            instance = new Bear();
+        }
+        return instance;
+    }
+
 }

@@ -41,6 +41,10 @@ public class AnimalTable {
         put ("Duck", 80);
     }};
 
+    protected HashMap<String, Integer> horseTable = new HashMap<>(){{
+        put ("Plant", 100);
+    }};
+
     protected HashMap<String, Integer> deerTable = new HashMap<>(){{
         put ("Plant", 100);
     }};
@@ -87,6 +91,7 @@ public class AnimalTable {
             animalTable.table.put("Fox", animalTable.foxTable);
             animalTable.table.put("Bear", animalTable.bearTable);
             animalTable.table.put("Eagle", animalTable.eagleTable);
+            animalTable.table.put("Horse", animalTable.horseTable);
             animalTable.table.put("Deer", animalTable.deerTable);
             animalTable.table.put("Rabbit", animalTable.rabbitTable);
             animalTable.table.put("Mouse", animalTable.mouseTable);
@@ -100,13 +105,11 @@ public class AnimalTable {
         return animalTable;
     }
 
-
     public int returnPossibility (String whoEats, String whoEaten){
-
-        return animalTable.table.get(whoEats).get(whoEaten);
-
+       int x=0;
+            if (AnimalTable.animalTable.table.get(whoEats).get(whoEaten)!=null) {
+                x = AnimalTable.animalTable.table.get(whoEats).get(whoEaten);}
+            return x;
     }
-
-
 
 }

@@ -7,5 +7,8 @@ public class Deer extends Herbivorous {
 
     public Deer() {
         super();
+        this.weight = 300;
+        this.speed = 4;
+        this.maxFoodToFeelGood = 50;
     }
 }

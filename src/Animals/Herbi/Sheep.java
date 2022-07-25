@@ -8,5 +8,7 @@ public class Sheep extends Herbivorous {
     public Sheep() {
         super();
         this.weight = 70;
+        this.speed = 3;
+        this.maxFoodToFeelGood = 15;
     }
 }

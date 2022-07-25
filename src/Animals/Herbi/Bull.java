@@ -7,5 +7,8 @@ public class Bull extends Herbivorous {
 
     public Bull() {
         super();
+        this.weight = 700;
+        this.speed = 3;
+        this.maxFoodToFeelGood = 100;
     }
 }
