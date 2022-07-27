@@ -19,7 +19,7 @@ public class Bear extends Carnivorous {
     }
 
     public synchronized static Bear returnBear(){
-        if (count.get() <= 30) {
+        if (count.get() <= Bear.maxAmountOnTheCell) {
             instance = new Bear();
         }
         return instance;

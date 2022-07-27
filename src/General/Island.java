@@ -1,9 +1,12 @@
 package General;
 
+//class Island - singleton - one instance of Island
 public class Island {
     private static Island instance = null;
-    private int lengthX=3;
-    private int lengthY=3;
+
+    //island size X x Y
+    private int lengthX = 8;
+    private int lengthY = 8;
 
 
     IslandCell [][] myMysteryIsland = new IslandCell[lengthY][lengthX]; //locations (cells) number
@@ -22,6 +25,8 @@ public class Island {
         return instance;
     }
 
+
+    //getters - setters
     public int getLengthX() {
         return lengthX;
     }
@@ -42,7 +47,4 @@ public class Island {
         return myMysteryIsland;
     }
 
-//    public void setMyMysteryIsland(IslandCell[][] myMysteryIsland) {
-//        this.myMysteryIsland = myMysteryIsland;
-//    }
 }

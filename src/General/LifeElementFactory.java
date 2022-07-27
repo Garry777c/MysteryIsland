@@ -5,6 +5,7 @@ import Animals.Herbi.*;
 import Animals.LifeElement;
 import Animals.Plant;
 
+//Animal Factory
 
 public class LifeElementFactory {
     private LifeElement lifeElement;
@@ -12,26 +13,23 @@ public class LifeElementFactory {
     public LifeElement getAnimalByType (AnimalType type){
             this.lifeElement = switch (type) {
                 case BEAR -> Bear.returnBear();
-                case BOA -> new Boa();
-                case EAGLE -> new Eagle();
-                case FOX -> new Fox();
+                case BOA -> Boa.returnBoa();
+                case EAGLE -> Eagle.returnEagle();
+                case FOX -> Fox.returnFox();
                 case WOLF -> Wolf.returnWolf();
-                case BOAR -> new Boar();
-                case BULL -> new Bull();
-                case CATERPILLAR -> new Caterpillar();
-                case DEER -> new Deer();
-                case DUCK -> new Duck();
-                case GOAT -> new Goat();
-                case HORSE -> new Horse();
-                case MOUSE -> new Mouse();
-                case RABBIT -> new Rabbit();
-                case SHEEP -> new Sheep();
-                case PLANT -> new Plant();
+                case BOAR -> Boar.returnBoar();
+                case BULL -> Bull.returnBull();
+                case CATERPILLAR -> Caterpillar.returnCaterpillar();
+                case DEER -> Deer.returnDeer();
+                case DUCK -> Duck.returnDuck();
+                case GOAT -> Goat.returnGoat();
+                case HORSE -> Horse.returnHorse();
+                case MOUSE -> Mouse.returnMouse();
+                case RABBIT -> Rabbit.returnRabbit();
+                case SHEEP -> Sheep.returnSheep();
+                case PLANT -> Plant.returnPlant();
             };
         return lifeElement;
     }
 
-//    public LifeElement getLifeElement() {
-//        return lifeElement;
-//    }
 }

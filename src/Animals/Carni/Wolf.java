@@ -19,7 +19,7 @@ public class Wolf extends Carnivorous {
     }
 
     public synchronized static Wolf returnWolf(){
-        if (count.get() <= 30) {
+        if (count.get() <= Wolf.maxAmountOnTheCell) {
             instance = new Wolf();
         }
         return instance;

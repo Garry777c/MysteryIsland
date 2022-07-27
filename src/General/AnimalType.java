@@ -1,5 +1,6 @@
 package General;
 
+//enum with all types of Animals plus Plant for Animal Factory
 public enum AnimalType {
     BEAR,
     BOA,

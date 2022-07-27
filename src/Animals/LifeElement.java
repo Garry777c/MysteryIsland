@@ -1,13 +1,13 @@
 package Animals;
 
 import General.IslandCell;
-import General.LifeElementFactory;
-
-import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
+
+//top parent class
 public class LifeElement implements Callable <LifeElement>{
 
+    //fields
     protected IslandCell location;
     protected float weight;
     protected int speed;
@@ -51,17 +51,9 @@ public class LifeElement implements Callable <LifeElement>{
 
     @Override
     public LifeElement call() {
-        System.out.println(this);
-           eat();
-//        System.out.println(this);
+        eat();
         multiply();
-          move();
-        System.out.println(this);
-        System.out.println("_______");
-//        eat();
-//        System.out.println(this);
-//        move();
-//        System.out.println(this);
+        move();
         return this;
     }
 }

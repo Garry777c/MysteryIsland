@@ -3,15 +3,11 @@ package Animals;
 import General.*;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Animal extends LifeElement{
 
     //general fields
-
     protected IslandCell location;
     protected float weight;
     protected int speed;
@@ -24,8 +20,6 @@ public abstract class Animal extends LifeElement{
         this.lifeAmount = 100;
         this.setLocation(StartIsland.randomCell());
     }
-
-
 
     //general methods
     public synchronized void eat() {
@@ -40,30 +34,33 @@ public abstract class Animal extends LifeElement{
 
         float currentLife = this.lifeAmount;
 
+        //get all animals/plants on the cell
         for (LifeElement toEat : animalToDo) {
             String whoEaten = toEat.getClass().getSimpleName();
             String whoEats = this.getClass().getSimpleName();
-            if (whoEaten.equals(whoEats)) continue;
+            if (whoEaten.equals(whoEats)) continue;//don't run method if they are same type
 
+            //random possibility and pull the possibility table for this Type of Animal
             int randomPossibility = ThreadLocalRandom.current().nextInt(0, 101);
-
             int possibility = AnimalTable.getInstance().returnPossibility(whoEats, whoEaten);
 
+            //check if the one can eat another one
             if ((possibility>randomPossibility)&&(toEat.isAlive())) {
                 System.out.println(whoEats + " ate " + whoEaten);
                 toEat.setAlive(false);
 
-                if(this.lifeAmount<100) {
+                if (this.lifeAmount<=0) this.setAlive(false);
+
+                //random condition to eat
+                if(this.lifeAmount<80 && this.lifeAmount>0) {
                     float factor = this.maxFoodToFeelGood/toEat.weight;
-                    float extra = (factor>=1)? 10 : (factor*10);
+                    float extra = (factor>=1)? 20 : (factor*10);
                     this.lifeAmount = currentLife + extra;
                     if (this.lifeAmount > 100) {
                         this.setLifeAmount(100f);
                     }
                 }
-
             }
-
         }
     }
 
@@ -82,19 +79,20 @@ public abstract class Animal extends LifeElement{
             String dad = toMultiply.getClass().getSimpleName();
             String mom = this.getClass().getSimpleName();
 
-            if (dad.equals("Plant")) continue;
+            if (dad.equals("Plant")) continue; //if it's plant don't multiply
 
-            if ((dad.equals(mom)) && (StartIsland.counter<=1000)) {
-                if (ThreadLocalRandom.current().nextInt(0,5) == 0)
+            //multiply with 10% possibility
+            if ((dad.equals(mom)) && (StartIsland.counter<=StartIsland.maxNewBorn)) {
+                if (ThreadLocalRandom.current().nextInt(0,11) == 0)
                 {
                     StartIsland.animalList.add(StartIsland.lifeElementFactory.getAnimalByType(AnimalType
                             .valueOf(dad.toUpperCase())));
                     System.out.println("New "+dad+ " was born!");
                     StartIsland.counter++;
-                }
+                    }
+               }
             }
-            }
-    }
+      }
 
     public synchronized void move(){
 
@@ -103,6 +101,7 @@ public abstract class Animal extends LifeElement{
         int newY = 0;
         int speed = this.getSpeed();
 
+        //random direction
         int directionMove = ThreadLocalRandom.current().nextInt(1,5); //1 -up, 2 - right, 3 - down, 4 - left
 
         switch (directionMove) {
@@ -114,7 +113,7 @@ public abstract class Animal extends LifeElement{
                 } else {
                     newY = (startPoint.getY() - (speed - Math.abs(difference)));
                 }
-                System.out.println("up");
+                System.out.println(this.getClass().getSimpleName()+" goes up");
             }
 
             case 2 -> {
@@ -127,7 +126,7 @@ public abstract class Animal extends LifeElement{
                 } else {
                     newX = (startPoint.getX() + ((StartIsland.myIsland.getLengthX() - 1) - startPoint.getX()));
                 }
-                System.out.println("right");
+                System.out.println(this.getClass().getSimpleName()+" goes right");
             }
 
             case 3 -> {
@@ -140,7 +139,7 @@ public abstract class Animal extends LifeElement{
                 } else {
                     newY = (startPoint.getY() + ((StartIsland.myIsland.getLengthY() - 1) - startPoint.getY()));
                 }
-                System.out.println("down");
+                System.out.println(this.getClass().getSimpleName()+" goes down");
             }
 
             case 4 -> {
@@ -151,19 +150,18 @@ public abstract class Animal extends LifeElement{
                 } else {
                     newX = (startPoint.getX() - (speed - Math.abs(difference)));
                 }
-                System.out.println("left");
+                System.out.println(this.getClass().getSimpleName()+" goes left");
             }
 
         }
 
         this.setLocation(StartIsland.myIsland.getMyMysteryIsland()[newY][newX]);
-        this.setLifeAmount(this.lifeAmount-40); //each cycle takes 20% of the life
-
+        this.setLifeAmount(this.lifeAmount-10); //each cycle takes 10% of the life
+        if (this.lifeAmount<=0) this.setAlive(false);
     }
 
+
     //getters setters
-
-
     public ArrayList<LifeElement> getAnimalToDo() {
         return animalToDo;
     }
@@ -199,10 +197,7 @@ public abstract class Animal extends LifeElement{
         return "Animal: { " +
                 this.getClass().getSimpleName() +
                  ", "+location +
-                ", weight=" + weight +
-                ", speed=" + speed +
-                ", maxFoodToFeelGood=" + maxFoodToFeelGood +
-                ", isAlive=" + isAlive +
+                " life "+lifeAmount+ "%"+
                 '}';
     }
 }

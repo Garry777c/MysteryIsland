@@ -2,6 +2,7 @@ package General;
 
 import java.util.Objects;
 
+//cell for Island
 public class IslandCell {
     public int x;
     public int y;
@@ -29,7 +30,7 @@ public class IslandCell {
 
     @Override
     public String toString() {
-        return "Location coordinates {" +
+        return "Location {" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

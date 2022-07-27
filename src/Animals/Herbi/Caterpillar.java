@@ -2,13 +2,26 @@ package Animals.Herbi;
 
 import Animals.Herbivorous;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Caterpillar extends Herbivorous {
     public static final int maxAmountOnTheCell = 1000;
+    public volatile static AtomicInteger count = new AtomicInteger();
+    private static Caterpillar instance;
 
-    public Caterpillar() {
+    private Caterpillar() {
         super();
         this.weight = 0.01F;
         this.speed = 0;
         this.maxFoodToFeelGood = 0;
+        Caterpillar.count.getAndIncrement();
+    }
+
+    public synchronized static Caterpillar returnCaterpillar(){
+        if (count.get() <= Caterpillar.maxAmountOnTheCell) {
+            instance = new Caterpillar();
+        }
+        return instance;
     }
 }

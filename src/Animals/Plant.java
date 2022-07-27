@@ -1,22 +1,34 @@
 package Animals;
 
+import Animals.Herbi.Sheep;
 import General.IslandCell;
 import General.StartIsland;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Plant extends LifeElement{
-    public static final int maxAmountOnTheCell = 200;
+    public static final int maxAmountOnTheCell = 2000;
+    public volatile static AtomicInteger count = new AtomicInteger();
+    private static Plant instance;
 
     protected IslandCell location;
     protected float weight;
     protected boolean isAlive;
 
-    public Plant() {
+    private Plant() {
         this.weight = 1;
         this.isAlive = true;
         this.lifeAmount = 100;
         this.setLocation(StartIsland.randomCell());
+        Plant.count.getAndIncrement();
     }
 
+    public synchronized static Plant returnPlant(){
+        if (count.get() <= Plant.maxAmountOnTheCell) {
+            instance = new Plant();
+        }
+        return instance;
+    }
 
 
 
@@ -38,12 +50,24 @@ public class Plant extends LifeElement{
     }
 
     @Override
+    public void move() {
+    }
+
+    @Override
+    public void eat() {
+        super.eat();
+    }
+
+    @Override
+    public void multiply() {
+        super.multiply();
+    }
+
+    @Override
     public String toString() {
         return "Plant: { " +
                 this.getClass().getSimpleName() +
                 ", "+location +
-                ", weight=" + weight +
-                ", isAlive=" + isAlive +
                 '}';
     }
 

@@ -1,19 +1,17 @@
 package General;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AnimalTable {
 
+    //main animal eating possibility table
     private static AnimalTable animalTable = null;
-    protected static String[] animalList = {
-            "Wolf", "Boa", "Fox", "Bear", "Eagle",
-            "Horse", "Deer", "Rabbit", "Mouse", "Goat", "Sheep", "Boar", "Bull", "Duck", "Caterpillar", "Plant"
-    };
+
 
     protected Map<String, Map<String, Integer>> table = new HashMap<>();
 
+    //create multiple table for each type of animal
     protected HashMap<String, Integer> wolfTable = new HashMap<>(){{
             put ("Horse", 10); put ("Deer", 15); put ("Rabbit", 60); put ("Mouse", 80);
             put ("Goat", 60); put ("Sheep", 70); put ("Boar", 15); put ("Bull", 10);
@@ -81,7 +79,7 @@ public class AnimalTable {
         put ("Plant", 100);
     }};
 
-
+    //fill possibility table as per specs
     public static AnimalTable getInstance() {
         if (animalTable == null) {
             animalTable = new AnimalTable();
